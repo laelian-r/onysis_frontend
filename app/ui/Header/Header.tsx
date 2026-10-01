@@ -14,9 +14,15 @@ export function Header() {
 					<h1 className="text-2xl font-bold">
 						Bienvenue, <span className="text-purple-500">{user.name}</span>
 					</h1>
-<<<<<<< HEAD:app/ui/Header.tsx
-=======
 
+					<div className="flex gap-2">
+						<Link
+							href="/releases/new"
+							className="p-2 bg-primary text-white rounded"
+						>
+							Nouvelle sortie
+						</Link>
+					</div>
 					<div className="flex gap-2">
 						<Link
 							href="/releases/new"
