@@ -39,9 +39,9 @@ export function DropdownMenu() {
 				type="button"
 				onClick={() => setOpen((prev) => !prev)}
 				aria-expanded={open}
-				className="flex h-[48px] items-center justify-between gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:p-2 md:px-3"
+				className="flex h-[48px] items-center justify-between gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-fuchsia-100 hover:text-purple-600 md:p-2 md:px-3"
 			>
-				<p className="hidden md:block">Mes articles</p>
+				<p className="hidden md:block">Mes sorties</p>
 				{/* petite flèche qui pivote à l'ouverture */}
 				<span
 					className={clsx(
@@ -59,18 +59,18 @@ export function DropdownMenu() {
 				<div className="flex flex-col mt-1 ml-2 pl-2 border-l border-gray-200 gap-1">
 					{articles.length === 0 ? (
 						<p className="px-3 py-2 text-sm text-gray-500 hidden md:block">
-							Aucun article
+							Aucune sortie
 						</p>
 					) : (
 						articles.map((article) => (
 							<Link
 								key={article.id}
-								href={`/articles/${article.id}`}
+								href={`/releases/${article.id}`}
 								className={clsx(
-									"truncate rounded-md p-2 px-3 text-sm hover:bg-sky-100 hover:text-blue-600 hidden md:block",
+									"truncate rounded-md p-2 px-3 text-sm hover:bg-fuchsia-100 hover:text-purple-600 hidden md:block",
 									{
-										"bg-sky-100 text-blue-600":
-											pathname === `/articles/${article.id}`,
+										"bg-fuchsia-100 text-purple-600":
+											pathname === `/releases/${article.id}`,
 									},
 								)}
 							>

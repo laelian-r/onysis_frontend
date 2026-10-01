@@ -10,16 +10,12 @@ import { DropdownMenu } from "@/app/ui/DropdownMenu";
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const connectedLinks = [
-	{ name: "Articles", href: "/articles" },
-	{
-		name: "Nouvel article",
-		href: "/articles/new",
-		// icon: DocumentDuplicateIcon,
-	},
+	{ name: "Dashboard", href: "/dashboard" },
+	{ name: "Statistiques", href: "/statistics" },
 ];
 
 const disconnectedLinks = [
-	{ name: "Articles", href: "/articles" },
+	{ name: "Dashboard", href: "/dashboard" },
 	{ name: "Connexion", href: "/login" },
 	{ name: "Inscription", href: "/register" },
 ];
@@ -38,9 +34,9 @@ export default function NavLinks() {
 								key={link.name}
 								href={link.href}
 								className={clsx(
-									"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+									"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-fuchsia-100 hover:text-purple-600 md:flex-none md:justify-start md:p-2 md:px-3",
 									{
-										"bg-sky-100 text-blue-600": pathname === link.href,
+										"bg-fuchsia-100 text-purple-600": pathname === link.href,
 									},
 								)}
 							>
@@ -60,9 +56,9 @@ export default function NavLinks() {
 								key={link.name}
 								href={link.href}
 								className={clsx(
-									"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+									"flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-fuchsia-100 hover:text-purple-600 md:flex-none md:justify-start md:p-2 md:px-3",
 									{
-										"bg-sky-100 text-blue-600": pathname === link.href,
+										"bg-fuchsia-100 text-purple-600": pathname === link.href,
 									},
 								)}
 							>

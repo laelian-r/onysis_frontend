@@ -44,7 +44,7 @@ export function useAuth() {
 			const res = await api.post("/register", form);
 			setToken(res.data.token, true); // on garde le token
 			setUser(res.data.user ?? null);
-			window.location.href = "/articles";
+			window.location.href = "/dashboard";
 			return true;
 		} catch (err) {
 			// 422 = erreurs de validation (email déjà pris, etc.)
@@ -60,7 +60,7 @@ export function useAuth() {
 			const res = await api.post("/login", form);
 			setToken(res.data.token, remember);
 			setUser(res.data.user ?? null);
-			window.location.href = "/articles";
+			window.location.href = "/dashboard";
 			return true;
 		} catch (err) {
 			if (err.response?.status === 422) {

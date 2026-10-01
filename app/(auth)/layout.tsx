@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { AuthHeader } from "@/app/ui/AuthHeader";
 
 // Pas de sidebar ici : header avec le nom de la page + main
+=======
+import { AuthHeader } from "@/app/ui/Header/AuthHeader";
+
+>>>>>>> f7fe45c (Refactor application structure and update UI components)
 export default function AuthLayout({
 	children,
 }: {

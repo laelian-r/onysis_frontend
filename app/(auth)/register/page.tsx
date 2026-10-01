@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { Form } from "@/app/ui/Form";
 import { Input } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
+=======
+import { useAuth } from "@/hooks/auth";
+import { Input, Textarea } from "@/app/ui/Input";
+import { Button } from "@/app/ui/Button";
+import Link from "next/link";
+>>>>>>> f7fe45c (Refactor application structure and update UI components)
 
 export default function Register() {
 	const { register, errors } = useAuth();
 	const router = useRouter();
 	const [form, setForm] = useState({ name: "", email: "", password: "" });
 
+<<<<<<< HEAD
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		const ok = await register(form);
@@ -33,13 +41,43 @@ export default function Register() {
 				onChange={(e) => setForm({ ...form, email: e.target.value })}
 			/>
 			{errors.email && <p>{errors.email[0]}</p>}
+=======
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const ok = await register(form);
+		if (ok) router.push("/dashboard");
+	};
+
+	return (
+		<form
+			onSubmit={handleSubmit}
+			className="flex flex-col bg-gray-200 p-4 rounded gap-2"
+		>
+			<Input
+				type="text"
+				placeholder="Nom d'utilisateur"
+				onChange={(e) => setForm({ ...form, name: e.target.value })}
+			/>
+			{errors.name && <p className="text-danger">{errors.name[0]}</p>}
+
+			<Input
+				type="email"
+				placeholder="Adresse email"
+				onChange={(e) => setForm({ ...form, email: e.target.value })}
+			/>
+			{errors.email && <p className="text-danger">{errors.email[0]}</p>}
+>>>>>>> f7fe45c (Refactor application structure and update UI components)
 
 			<Input
 				type="password"
 				placeholder="Mot de passe"
 				onChange={(e) => setForm({ ...form, password: e.target.value })}
 			/>
+<<<<<<< HEAD
 			{errors.password && <p>{errors.password[0]}</p>}
+=======
+			{errors.password && <p className="text-danger">{errors.password[0]}</p>}
+>>>>>>> f7fe45c (Refactor application structure and update UI components)
 
 			<Button type="submit">S'inscrire</Button>
 
@@ -49,6 +87,10 @@ export default function Register() {
 					Se connecter
 				</Link>
 			</p>
+<<<<<<< HEAD
 		</Form>
+=======
+		</form>
+>>>>>>> f7fe45c (Refactor application structure and update UI components)
 	);
 }
