@@ -17,7 +17,7 @@ export default function Login() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		const ok = await login(form, remember);
-		if (ok) router.push("/articles");
+		if (ok) router.push("/releases");
 	};
 
 	return (

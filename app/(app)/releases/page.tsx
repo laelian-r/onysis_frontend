@@ -25,10 +25,10 @@ export default function Home() {
 	const [articles, setArticles] = useState<Article[]>([]);
 	const [loading, setLoading] = useState<boolean>(true); // chargement de la liste
 
-	// Charge les articles une seule fois (route publique, pas besoin de token)
+	// Charge les releases une seule fois (route publique, pas besoin de token)
 	useEffect(() => {
 		api
-			.get("/articles")
+			.get("/releases")
 			.then((res) => setArticles(res.data.data ?? res.data))
 			.finally(() => setLoading(false));
 	}, []);

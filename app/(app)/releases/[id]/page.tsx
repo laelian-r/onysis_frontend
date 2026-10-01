@@ -16,10 +16,10 @@ export default function ArticlePage() {
 	const [article, setArticle] = useState(null); // null tant qu'il n'est pas chargé
 	const [loading, setLoading] = useState(true);
 
-	// Charge l'article (et recharge si l'id change)
+	// Charge la sortie (et recharge si l'id change)
 	useEffect(() => {
 		api
-			.get(`/articles/${id}`)
+			.get(`/releases/${id}`)
 			.then((res) => setArticle(res.data))
 			.finally(() => setLoading(false));
 	}, [id]);
@@ -27,7 +27,7 @@ export default function ArticlePage() {
 	// Supprime l'article puis retourne à la liste
 	const handleDelete = async () => {
 		if (!confirm("Supprimer cet article ?")) return; // l'utilisateur peut annuler
-		await api.delete(`/articles/${id}`); // Laravel vérifie que c'est bien l'auteur
+		await api.delete(`/releases/${id}`); // Laravel vérifie que c'est bien l'auteur
 		router.push("/dashboard");
 	};
 

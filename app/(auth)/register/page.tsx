@@ -16,7 +16,7 @@ export default function Register() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		const ok = await register(form);
-		if (ok) router.push("/articles");
+		if (ok) router.push("/releases");
 	};
 
 	return (

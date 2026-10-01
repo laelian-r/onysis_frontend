@@ -23,7 +23,7 @@ export function DropdownMenu() {
 		if (!user) return;
 
 		api
-			.get("/articles")
+			.get("/releases")
 			.then((res) => {
 				const mine = res.data.filter((a: any) => a.user_id === user.id);
 				setArticles(mine);
