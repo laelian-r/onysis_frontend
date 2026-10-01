@@ -1,9 +1,5 @@
 import Link from "next/link";
 
-<<<<<<< HEAD
-// Affichée dans le layout racine uniquement : ni sidebar, ni header
-=======
->>>>>>> f7fe45c (Refactor application structure and update UI components)
 export default function NotFound() {
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center gap-4">

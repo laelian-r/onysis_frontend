@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 :root {
-	--background: #f3f4f6; /* fond des pages (gray-100) */
+	--background: #f3f4f6; /* fond des pages (ex bg-gray-100) */
 	--surface: #ffffff; /* header, sidebar, cartes, inputs */
 	--foreground: #171717;
 
-	--primary: #3b82f6; /* blue-500 */
-	--secondary: #6b7280; /* gray-500 */
-	--success: #22c55e; /* green-500 */
-	--danger: #ef4444; /* red-500 */
+	--primary: #a855f7; /* violet : liens actifs, badge, boutons, nom */
+	--success: #22c55e; /* vert : Modifier, etc. */
+	--danger: #ef4444; /* rouge : Supprimer, etc. */
 }
 
 @theme inline {
@@ -17,7 +16,6 @@
 	--color-foreground: var(--foreground);
 
 	--color-primary: var(--primary);
-	--color-secondary: var(--secondary);
 	--color-success: var(--success);
 	--color-danger: var(--danger);
 
@@ -25,13 +23,15 @@
 	--font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: dark) {
+/* Mode sombre : décommente et ajuste, aucun composant n'est à modifier
+@media (prefers-color-scheme: dark) {
 	:root {
 		--background: #0a0a0a;
 		--surface: #171717;
 		--foreground: #ededed;
 	}
-} */
+}
+*/
 
 body {
 	background: var(--background);

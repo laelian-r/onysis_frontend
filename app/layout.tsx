@@ -13,13 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
-	title: "Mon application",
-	description: "Description de mon application",
-=======
 	title: "Onysis",
 	description: "Gestion de vos sorties musicales",
->>>>>>> f7fe45c (Refactor application structure and update UI components)
 };
 
 export default function RootLayout({
