@@ -7,6 +7,7 @@ import clsx from "clsx";
 import api from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
 import { ChevronDown } from "lucide-react";
+import { ButtonLinkAside } from "@/app/ui/Button";
 
 export function DropdownMenu() {
 	const { user } = useAuth() as {
@@ -14,7 +15,7 @@ export function DropdownMenu() {
 		[key: string]: any;
 	};
 	const pathname = usePathname();
-	const [open, setOpen] = useState(false); // replié par défaut
+	const open = pathname === "/releases" || pathname.startsWith("/releases/");
 	const [articles, setArticles] = useState<any[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -35,30 +36,37 @@ export function DropdownMenu() {
 	return (
 		<div className="flex flex-col">
 			{/* Le bouton reprend le style de tes autres liens de sidebar, pour rester cohérent */}
-			<button
+			{/* <ButtonLink
 				type="button"
 				onClick={() => setOpen((prev) => !prev)}
 				aria-expanded={open}
 				className="flex h-[48px] items-center justify-between gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-fuchsia-100 hover:text-purple-600 md:p-2 md:px-3"
+			> */}
+			<ButtonLinkAside
+				href="/releases"
+				aria-expanded={open}
+				className={clsx(
+					"flex h-[48px] items-center justify-between gap-2 font-medium hover:bg-primary/10 hover:text-primary md:flex-none md:justify-between md:p-2 md:px-3",
+					{ "bg-primary/10 text-primary": open },
+				)}
 			>
 				<p className="hidden md:block">Mes sorties</p>
-				{/* petite flèche qui pivote à l'ouverture */}
 				<span
 					className={clsx(
-						"transition-transform hidden md:block",
+						"hidden transition-transform md:block",
 						open && "rotate-180",
 					)}
 				>
 					<ChevronDown />
 				</span>
-			</button>
+			</ButtonLinkAside>
 
 			{/* Le contenu s'affiche EN DESSOUS du bouton, dans le flux normal —
 			    il repousse les liens suivants au lieu de flotter par-dessus */}
 			{open && (
-				<div className="flex flex-col mt-1 ml-2 pl-2 border-l border-gray-200 gap-1">
+				<div className="mt-1 ml-2 flex flex-col gap-1 border-l border-gray-200 pl-2">
 					{articles.length === 0 ? (
-						<p className="px-3 py-2 text-sm text-gray-500 hidden md:block">
+						<p className="hidden px-3 py-2 text-sm text-gray-500 md:block">
 							Aucune sortie
 						</p>
 					) : (
@@ -67,9 +75,9 @@ export function DropdownMenu() {
 								key={article.id}
 								href={`/releases/${article.id}`}
 								className={clsx(
-									"truncate rounded-md p-2 px-3 text-sm hover:bg-fuchsia-100 hover:text-purple-600 hidden md:block",
+									"hidden truncate rounded-md p-2 px-3 text-sm hover:bg-primary/10 hover:text-primary md:block",
 									{
-										"bg-fuchsia-100 text-purple-600":
+										"bg-primary/10 text-primary":
 											pathname === `/releases/${article.id}`,
 									},
 								)}

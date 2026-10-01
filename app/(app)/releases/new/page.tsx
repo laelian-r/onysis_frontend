@@ -17,7 +17,7 @@ export default function NewArticlePage() {
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // évite le rechargement de la page
 		try {
-			const res = await api.post("/dashboard", form); // Laravel lie l'article à l'utilisateur du token
+			const res = await api.post("/articles", form); // Laravel lie l'article à l'utilisateur du token
 			router.push(`/releases/${res.data.id}`); // va sur l'article créé
 		} catch (err) {
 			// 422 = validation échouée (titre vide, contenu trop long...)

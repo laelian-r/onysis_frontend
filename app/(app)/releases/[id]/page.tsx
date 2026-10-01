@@ -34,7 +34,7 @@ export default function ArticlePage() {
 	if (loading) return <Loading />;
 
 	// chargement fini mais pas d'article : il n'existe pas (404)
-	if (!article) return <p>Article introuvable.</p>;
+	if (!article) return <p>Sortie introuvable.</p>;
 
 	// ici article n'est jamais null
 	const isOwner = user && article.user_id === user.id;

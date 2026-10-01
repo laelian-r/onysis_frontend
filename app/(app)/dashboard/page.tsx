@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/auth";
 import { Header } from "@/app/ui/Header/Header";
 import { Loading } from "@/app/ui/Loading";
 import { Button, ButtonLink } from "@/app/ui/Button";
+import { useRouter } from "next/navigation";
 
 type User = { id: number; name: string };
 
@@ -23,6 +24,7 @@ export default function Home() {
 	}; // utilisateur connecté (ou null)
 	const [articles, setArticles] = useState<Article[]>([]);
 	const [loading, setLoading] = useState<boolean>(true); // chargement de la liste
+	const router = useRouter();
 
 	// Charge les articles une seule fois (route publique, pas besoin de token)
 	useEffect(() => {
