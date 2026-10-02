@@ -13,14 +13,14 @@ export default function ArticlePage() {
 	const { user, loading: authLoading } = useAuth();
 	const { id } = useParams(); // id lu dans l'URL (/releases/12 → "12")
 	const router = useRouter();
-	const [article, setArticle] = useState(null); // null tant qu'il n'est pas chargé
+	const [release, setRelease] = useState(null); // null tant qu'il n'est pas chargé
 	const [loading, setLoading] = useState(true);
 
 	// Charge la sortie (et recharge si l'id change)
 	useEffect(() => {
 		api
 			.get(`/releases/${id}`)
-			.then((res) => setArticle(res.data))
+			.then((res) => setRelease(res.data))
 			.finally(() => setLoading(false));
 	}, [id]);
 
@@ -34,17 +34,17 @@ export default function ArticlePage() {
 	if (loading) return <Loading />;
 
 	// chargement fini mais pas d'article : il n'existe pas (404)
-	if (!article) return <p>Sortie introuvable.</p>;
+	if (!release) return <p>Sortie introuvable.</p>;
 
-	// ici article n'est jamais null
-	const isOwner = user && article.user_id === user.id;
+	// ici release n'est jamais null
+	const isOwner = user && release.user_id === user.id;
 
 	return (
 		<>
 			<article className="flex flex-col bg-white p-4 rounded mx-4">
-				<h1 className="text-2xl font-bold text-purple-500">{article.title}</h1>
-				<p>{article.content}</p>
-				<p className="text-purple-500 mt-4 text-">{article.user.name}</p>
+				<h1 className="text-2xl font-bold text-purple-500">{release.title}</h1>
+				{release.type && <p>{release.type.type}</p>}
+				<p className="text-purple-500 mt-4 text-">{release.user.name}</p>
 
 				{/* boutons visibles seulement pour l'auteur (la vraie sécurité est côté Laravel) */}
 				{isOwner && (
