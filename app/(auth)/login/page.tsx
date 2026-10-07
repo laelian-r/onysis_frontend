@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { Form } from "@/app/ui/Form";
-import { Input } from "@/app/ui/Input";
+import { InputText } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
 
 export default function Login() {
@@ -22,12 +22,12 @@ export default function Login() {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<Input
+			<InputText
 				type="email"
 				placeholder="Email"
 				onChange={(e) => setForm({ ...form, email: e.target.value })}
 			/>
-			<Input
+			<InputText
 				type="password"
 				placeholder="Mot de passe"
 				onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -37,7 +37,7 @@ export default function Login() {
 			)}
 
 			<label className="flex items-center gap-2">
-				<Input
+				<InputText
 					type="checkbox"
 					checked={remember}
 					onChange={(e) => setRemember(e.target.checked)}

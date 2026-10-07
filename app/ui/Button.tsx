@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-const base = "rounded p-2 text-center text-white hover:opacity-90";
-const linkAsideBase = "rounded p-2 text-center text-black";
+const base =
+	"rounded p-2 text-center text-white hover:opacity-90 cursor-pointer";
+const linkAsideBase = "rounded p-2 text-center hover:opacity-90";
 
 // classes écrites en entier : Tailwind ne détecte pas `bg-${couleur}`
 const variants = {

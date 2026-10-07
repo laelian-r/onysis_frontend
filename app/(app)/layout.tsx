@@ -20,7 +20,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="flex min-h-screen justify-between">
 			<SideNav />
-			<div className="flex w-full flex-col">
+			<div className="flex w-full flex-col h-screen overflow-y-auto">
 				<Header />
 				<main className="flex flex-1 flex-col p-4">{children}</main>
 			</div>

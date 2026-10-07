@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { Form } from "@/app/ui/Form";
-import { Input } from "@/app/ui/Input";
+import { InputText } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
 
 export default function Register() {
@@ -21,20 +21,20 @@ export default function Register() {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<Input
+			<InputText
 				placeholder="Nom"
 				onChange={(e) => setForm({ ...form, name: e.target.value })}
 			/>
 			{errors.name && <p>{errors.name[0]}</p>}
 
-			<Input
+			<InputText
 				type="email"
 				placeholder="Email"
 				onChange={(e) => setForm({ ...form, email: e.target.value })}
 			/>
 			{errors.email && <p>{errors.email[0]}</p>}
 
-			<Input
+			<InputText
 				type="password"
 				placeholder="Mot de passe"
 				onChange={(e) => setForm({ ...form, password: e.target.value })}

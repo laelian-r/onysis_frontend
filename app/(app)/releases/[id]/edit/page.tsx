@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import api from "@/lib/axios";
 import { requireAuth } from "@/hooks/requireAuth";
 import { Loading } from "@/app/ui/Loading";
-import { Input, Textarea } from "@/app/ui/Input";
+import { InputText, Textarea } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
 
 export default function EditArticlePage() {
@@ -47,7 +47,7 @@ export default function EditArticlePage() {
 			className="flex flex-col bg-gray-200 p-4 rounded gap-2"
 		>
 			{/* value + onChange = champ contrôlé : React garde la valeur */}
-			<Input
+			<InputText
 				value={form.title}
 				placeholder="Titre"
 				onChange={(e) => setForm({ ...form, title: e.target.value })}

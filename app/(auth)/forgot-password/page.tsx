@@ -5,10 +5,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { Form } from "@/app/ui/Form";
-import { Input } from "@/app/ui/Input";
+import { InputText } from "@/app/ui/Input";
 =======
 import { useAuth } from "@/hooks/auth";
-import { Input, Textarea } from "@/app/ui/Input";
+import { InputText, Textarea } from "@/app/ui/Input";
 >>>>>>> f7fe45c (Refactor application structure and update UI components)
 import { Button } from "@/app/ui/Button";
 
@@ -38,7 +38,7 @@ export default function ForgotPasswordPage() {
 			className="flex flex-col bg-gray-200 p-4 rounded gap-2"
 		>
 >>>>>>> f7fe45c (Refactor application structure and update UI components)
-			<Input
+			<InputText
 				type="email"
 				placeholder="Votre email"
 				onChange={(e) => setEmail(e.target.value)}

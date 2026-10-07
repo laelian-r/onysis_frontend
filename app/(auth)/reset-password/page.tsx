@@ -5,11 +5,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/hooks/auth";
 <<<<<<< HEAD
 import { Form } from "@/app/ui/Form";
-import { Input } from "@/app/ui/Input";
+import { InputText } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
 import { Loading } from "@/app/ui/Loading";
 =======
-import { Input, Textarea } from "@/app/ui/Input";
+import { InputText, Textarea } from "@/app/ui/Input";
 import { Button } from "@/app/ui/Button";
 >>>>>>> f7fe45c (Refactor application structure and update UI components)
 
@@ -32,14 +32,14 @@ function ResetForm() {
 
 	return (
 		<Form onSubmit={handleSubmit}>
-			<Input
+			<InputText
 				type="password"
 				placeholder="Nouveau mot de passe"
 				onChange={(e) => setForm({ ...form, password: e.target.value })}
 			/>
 			{errors.password && <p>{errors.password[0]}</p>}
 
-			<Input
+			<InputText
 				type="password"
 				placeholder="Confirmation"
 =======
@@ -53,13 +53,13 @@ function ResetForm() {
 			onSubmit={handleSubmit}
 			className="flex flex-col bg-gray-200 p-4 rounded gap-2"
 		>
-			<Input
+			<InputText
 				type="password"
 				placeholder="Mot de passe"
 				onChange={(e) => setForm({ ...form, password: e.target.value })}
 			/>
 			{errors.password && <p className="text-danger">{errors.password[0]}</p>}
-			<Input
+			<InputText
 				type="password"
 				placeholder="Confirmer le mot de passe"
 >>>>>>> f7fe45c (Refactor application structure and update UI components)

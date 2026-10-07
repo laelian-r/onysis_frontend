@@ -8,6 +8,7 @@ import { useAuth } from "@/hooks/auth";
 import { Header } from "@/app/ui/Header/Header";
 import { Loading } from "@/app/ui/Loading";
 import { Button, ButtonLink } from "@/app/ui/Button";
+import ReleaseCard from "@/app/ui/Releases/ReleaseCard";
 
 export default function ArticlePage() {
 	const { user, loading: authLoading } = useAuth();
@@ -40,24 +41,6 @@ export default function ArticlePage() {
 	const isOwner = user && release.user_id === user.id;
 
 	return (
-		<>
-			<article className="flex flex-col bg-white p-4 rounded mx-4">
-				<h1 className="text-2xl font-bold text-purple-500">{release.title}</h1>
-				{release.type && <p>{release.type.type}</p>}
-				<p className="text-purple-500 mt-4 text-">{release.user.name}</p>
-
-				{/* boutons visibles seulement pour l'auteur (la vraie sécurité est côté Laravel) */}
-				{isOwner && (
-					<div className="flex gap-2 mt-4">
-						<ButtonLink href={`/releases/${id}/edit`} variant="success">
-							Modifier
-						</ButtonLink>
-						<Button variant="danger" onClick={handleDelete}>
-							Supprimer
-						</Button>
-					</div>
-				)}
-			</article>
-		</>
+		<ReleaseCard key={release.id} release={release} isNextRelease={false} />
 	);
 }

@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import api from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
-import { Header } from "@/app/ui/Header/Header";
 import { Loading } from "@/app/ui/Loading";
-import { Button, ButtonLink } from "@/app/ui/Button";
+import ReleaseCard from "@/app/ui/Releases/ReleaseCard";
+import NextReleaseCard from "@/app/ui/Releases/NextReleaseCard";
 
 type User = { id: number; name: string };
 
@@ -15,17 +14,17 @@ type Article = {
 	title: string;
 	user_id: number;
 	user: { name: string };
+	release_date: string | null;
 };
 
-export default function Home() {
+export default function Releases() {
 	const { user } = useAuth() as {
 		user: User | null;
 		[key: string]: any;
-	}; // utilisateur connecté (ou null)
+	};
 	const [articles, setArticles] = useState<Article[]>([]);
-	const [loading, setLoading] = useState<boolean>(true); // chargement de la liste
+	const [loading, setLoading] = useState(true);
 
-	// Charge les releases une seule fois (route publique, pas besoin de token)
 	useEffect(() => {
 		api
 			.get("/releases")
@@ -33,53 +32,43 @@ export default function Home() {
 			.finally(() => setLoading(false));
 	}, []);
 
-	// Tant que ça charge, on affiche seulement ce message
 	if (loading) return <Loading />;
 
-	return (
-		<>
-			{articles.length === 0 ? (
-				<p className="p-4 text-center text-gray-500">
-					Aucune sortie pour le moment.
-				</p>
-			) : (
-				<section className="flex flex-wrap gap-4">
-					{articles.map((article) => {
-						// vrai si l'article appartient à l'utilisateur connecté
-						const isOwner = user && article.user_id === user.id;
+	const now = new Date();
+	const today = [
+		now.getFullYear(),
+		String(now.getMonth() + 1).padStart(2, "0"),
+		String(now.getDate()).padStart(2, "0"),
+	].join("-");
 
-						return (
-							// key obligatoire dans une liste
-							<article
-								key={article.id}
-								className="flex flex-col bg-white p-4 rounded w-2/6"
-							>
-								<div className="flex justify-between">
-									<h2 className="text-xl font-bold">{article.title}</h2>
-									{/* badge visible seulement pour mes articles */}
-									{isOwner && (
-										<span className="bg-primary text-white p-1 rounded">
-											Vous
-										</span>
-									)}
-								</div>
+	const nextRelease = articles
+		.filter((article) => article.release_date?.slice(0, 10) >= today)
+		.sort((a, b) =>
+			(a.release_date ?? "")
+				.slice(0, 10)
+				.localeCompare((b.release_date ?? "").slice(0, 10)),
+		)[0];
 
-								{/* nom de l'auteur, fourni par with('user') côté Laravel */}
-								<p>{article.user.name}</p>
-
-								<div className="mt-4 flex justify-between gap-2">
-									<ButtonLink
-										href={`/releases/${article.id}`}
-										className="w-full"
-									>
-										Voir
-									</ButtonLink>
-								</div>
-							</article>
-						);
-					})}
-				</section>
+	return articles.length === 0 ? (
+		<p className="p-4 text-center text-gray-500">
+			Aucune sortie pour le moment.
+		</p>
+	) : (
+		<section className="flex flex-wrap gap-4">
+			{nextRelease && (
+				<NextReleaseCard key={nextRelease.id} release={nextRelease} />
 			)}
-		</>
+			{articles
+				.filter((article) => article.id !== nextRelease?.id)
+				.map((article) => {
+					return (
+						<ReleaseCard
+							key={article.id}
+							release={article}
+							isNextRelease={false}
+						/>
+					);
+				})}
+		</section>
 	);
 }
