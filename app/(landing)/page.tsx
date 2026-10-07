@@ -28,7 +28,7 @@ export default function Landing() {
 				<div className="flex flex-col items-center justify-center gap-2">
 					<h2 className="text-[3rem] font-bold text-primary">Onysis</h2>
 					<h3 className="text-2xl font-bold">
-						Lance ta carrière musicale dès maintenant en quelques clics !
+						Construis ta carrière musicale en quelques clics !
 					</h3>
 				</div>
 
