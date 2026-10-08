@@ -64,22 +64,6 @@ export default function Dashboard() {
 				) : (
 					<p className="p-4">Aucune prochaine sortie n’est prévue.</p>
 				)}
-
-				{/* <form className="bg-white p-4 rounded-lg w-2/6 flex flex-col">
-					<div className="flex justify-between items-center mb-4">
-						<h2 className="text-lg font-bold">Tâches</h2>
-						<Link
-							href="/dashboard/freestyle-vlrbn-2"
-							className="text-purple-500 text-sm flex items-center gap-1"
-						>
-							Voir plus <ArrowRight size={16} />
-						</Link>
-					</div>
-
-					<Tasks title="Tâche 1" id="Tache 1" />
-					<Tasks title="Tâche 2" id="Tache 2" />
-					<Tasks title="Tâche 3" id="Tache 3" />
-				</form> */}
 			</section>
 
 			<section className="flex gap-4 items-start">

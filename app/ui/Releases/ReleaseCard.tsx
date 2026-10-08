@@ -44,7 +44,7 @@ export default function ReleaseCard({
 	return (
 		<article
 			className={`flex w-full flex-col justify-between rounded p-4 ${
-				isNextRelease ? "bg-primary/10" : "bg-white"
+				isNextRelease ? "bg-primary/10 gap-2" : "bg-white"
 			}`}
 		>
 			{isNextRelease && (
