@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
 import api from "@/lib/axios";
 import { useAuth } from "@/hooks/auth";
 import { Header } from "@/app/ui/Header/Header";
 import { Loading } from "@/app/ui/Loading";
 import { Button, ButtonLink } from "@/app/ui/Button";
 import ReleaseCard from "@/app/ui/Releases/ReleaseCard";
+import Conseils from "@/app/ui/Releases/Conseils";
+import { useEffect, useState } from "react";
 
 export default function ArticlePage() {
 	const { user, loading: authLoading } = useAuth();
@@ -41,6 +41,9 @@ export default function ArticlePage() {
 	const isOwner = user && release.user_id === user.id;
 
 	return (
-		<ReleaseCard key={release.id} release={release} isNextRelease={false} />
+		<div className="flex flex-col gap-4">
+			<ReleaseCard key={release.id} release={release} isNextRelease={false} />
+			<Conseils releaseId={release.id} />
+		</div>
 	);
 }

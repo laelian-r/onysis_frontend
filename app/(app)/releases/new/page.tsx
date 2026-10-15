@@ -118,16 +118,25 @@ export default function NewReleasePage() {
 			});
 			router.push(`/releases/${res.data.id}`);
 		} catch (err) {
+			console.error("Erreur lors de la création de la release :", err);
+
 			const response = (
 				err as {
 					response?: {
 						status: number;
-						data: { errors: Record<string, string[]> };
+						data: {
+							errors?: Record<string, string[]>;
+							message?: string;
+						};
 					};
 				}
 			).response;
 
-			if (response?.status === 422) setErrors(response.data.errors);
+			if (response?.status === 422 && response.data.errors) {
+				setErrors(response.data.errors);
+			} else {
+				console.error(response?.data?.message ?? "Erreur serveur");
+			}
 		}
 	};
 

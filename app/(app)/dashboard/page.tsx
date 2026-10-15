@@ -11,6 +11,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Tasks from "@/app/ui/Releases/Tasks";
 
+import Conseils from "@/app/ui/Releases/Conseils";
 import MyChart from "@/app/ui/Statistiques/LineChart";
 
 // Le dashboard conserve la liste reçue de l’API et l’état de chargement.
@@ -67,58 +68,7 @@ export default function Dashboard() {
 			</section>
 
 			<section className="flex gap-4 items-start">
-				<article className="bg-white p-4 rounded-lg w-full flex flex-col gap-2">
-					<h2 className="text-lg font-bold">Conseils</h2>
-
-					<div className="flex gap-4 items-center">
-						<span className="h-4 w-4 bg-red-500 rounded-full"></span>
-
-						<div>
-							<h3 className="text-md font-bold">
-								Optimise ta campagne de pré-save pour maximiser son impact.
-							</h3>
-
-							<p className="flex items-center gap-2">
-								<ArrowRight size={16} /> Ton taux de conversion est inférieur à
-								celui de tes précédentes sorties
-							</p>
-						</div>
-					</div>
-
-					<hr className="text-gray-300" />
-
-					<div className="flex gap-4 items-center">
-						<span className="h-4 w-4 bg-yellow-500 rounded-full"></span>
-
-						<div>
-							<h3 className="text-md font-bold">
-								Publie davantage de contenus courts
-							</h3>
-
-							<p className="flex items-center gap-2">
-								<ArrowRight size={16} /> Les contenus courts génèrent 2.4x plus
-								d’engagement en ce moment
-							</p>
-						</div>
-					</div>
-
-					<hr className="text-gray-300" />
-
-					<div className="flex gap-4 items-center">
-						<span className="h-4 w-4 bg-green-500 rounded-full"></span>
-
-						<div>
-							<h3 className="text-md font-bold">
-								Tes publications du vendredi fonctionnent mieux
-							</h3>
-
-							<p className="flex items-center gap-2">
-								<ArrowRight size={16} /> Ton engagement 37% plus élevé ce
-								jour-là
-							</p>
-						</div>
-					</div>
-				</article>
+				{nextRelease && <Conseils releaseId={nextRelease.id} />}
 
 				<article className="bg-white p-4 rounded-lg w-full flex flex-col gap-2">
 					<div className="flex justify-between items-center mb-4">

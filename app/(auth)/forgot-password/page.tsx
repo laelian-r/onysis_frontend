@@ -1,15 +1,10 @@
 "use client";
 
 import { useState } from "react";
-<<<<<<< HEAD
 import Link from "next/link";
 import { useAuth } from "@/hooks/auth";
 import { Form } from "@/app/ui/Form";
 import { InputText } from "@/app/ui/Input";
-=======
-import { useAuth } from "@/hooks/auth";
-import { InputText, Textarea } from "@/app/ui/Input";
->>>>>>> f7fe45c (Refactor application structure and update UI components)
 import { Button } from "@/app/ui/Button";
 
 export default function ForgotPasswordPage() {
@@ -24,20 +19,10 @@ export default function ForgotPasswordPage() {
 	};
 
 	// Après l'envoi, on remplace le formulaire par un message
-<<<<<<< HEAD
 	if (sent) return <p>Un lien vient de vous être envoyé.</p>;
 
 	return (
 		<Form onSubmit={handleSubmit}>
-=======
-	if (sent) return <p className="p-4">Un lien viens de vous être envoyé.</p>;
-
-	return (
-		<form
-			onSubmit={handleSubmit}
-			className="flex flex-col bg-gray-200 p-4 rounded gap-2"
-		>
->>>>>>> f7fe45c (Refactor application structure and update UI components)
 			<InputText
 				type="email"
 				placeholder="Votre email"
@@ -46,7 +31,6 @@ export default function ForgotPasswordPage() {
 			{errors.email && <p>{errors.email[0]}</p>}
 
 			<Button type="submit">Envoyer le lien</Button>
-<<<<<<< HEAD
 
 			<p className="text-center">
 				<Link href="/login" className="text-primary underline">
@@ -54,8 +38,5 @@ export default function ForgotPasswordPage() {
 				</Link>
 			</p>
 		</Form>
-=======
-		</form>
->>>>>>> f7fe45c (Refactor application structure and update UI components)
 	);
 }
